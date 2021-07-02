@@ -1,0 +1,87 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ title }} - My Flask Application</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/content/login_registration.css" />
+</head>
+
+
+
+<body id="LoginForm">
+
+
+    <div class="container">
+        <h1 class="form-heading">YMLearn Learning Platform</h1>
+
+
+        <div class="login-form">
+            <div class="main-div">
+                <div class="panel">
+                    <h2>YMLearn Registration</h2>
+                    <p>Please enter your email and password</p>
+                </div>
+                <form id="Login">
+
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="inputFname" placeholder="Full Name">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+                    </div>
+
+
+                    <div class="form-group">
+                        <select class="form-control" aria-label="Default select example">
+                            <option selected disabled>Select Qualification</option>
+                            <option value="KS3">KS3 (Year 7 to 9)</option>
+                            <option value="GCSE">GCSE (Year 10 to 11)</option>
+                            <option value="A-Level">A-Level (Year 12 to 13)</option>
+                        </select>
+
+
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password">
+                    </div>
+
+
+
+
+
+
+
+                        <button type="submit" class="btn btn-primary">Create an Account</button><br><br>
+
+                        <p>Have an account? <a href="{{ url_for('login') }}"> Login now! </a></p>
+
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+</body>
+
+
+
+</html>
