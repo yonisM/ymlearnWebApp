@@ -59,14 +59,10 @@ def GCSE():
     topics = cur.execute("SELECT * FROM public.topics;")
     
 
-
-
-
     """Renders the about page."""
     return render_template(
         'GCSE.html',
-        title='About',
-        topics = topics
+        title='About'
     )
 
 
