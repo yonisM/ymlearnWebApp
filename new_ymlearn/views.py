@@ -3,8 +3,18 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template
+from flask import render_template, request
 from new_ymlearn import app
+import psycopg2
+import os
+
+
+#Connect to DB in Heroku
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+
+
 
 
 
@@ -44,13 +54,15 @@ def account():
 
 @app.route('/GCSE')
 def GCSE():
-    """Renders the about page."""
 
+    cur = conn.cursor()
+    topics = cur.execute("SELECT * FROM public.topics;")
+    
+
+    """Renders the about page."""
     return render_template(
         'GCSE.html',
-        title='About',
-        year=datetime.now().year,
-        message='Your application description page.'
+        title='About'
     )
 
 
