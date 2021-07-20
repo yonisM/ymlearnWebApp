@@ -10,10 +10,11 @@ import os
 
 
 #Connect to DB in Heroku
-DATABASE_URL = os.environ['DATABASE_URL']
+#DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = 'postgres://svqsyxjufbvthi:c72117284b2863babb395540da2b749fb1e5bdc25845378ed8c69edbf1e0db4f@ec2-54-74-14-109.eu-west-1.compute.amazonaws.com:5432/dnvhkb81c6gu3'
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
-
+cur = conn.cursor()
 
 
 
@@ -55,17 +56,32 @@ def account():
 @app.route('/GCSE')
 def GCSE():
 
-    cur = conn.cursor()
-    topics = cur.execute("SELECT * FROM public.topics;")
     
+    cur.execute("SELECT * FROM public.topics")
 
+    topics = cur.fetchall()
+
+    #listoutput=[i[0] for i in topics]
+
+   
     """Renders the about page."""
     return render_template(
         'GCSE.html',
-        title='About'
+        topics = topics,
+        title='GCSE Home',
+        default = 'Number'
     )
 
+@app.route('/topic/<id>')
+
+def topics(id):
+
+
+    cur.execute("SELECT * FROM public.topics where id = value".replace("value",id))
+
+    topic = cur.fetchall()
 
 
 
+    return render_template('topic.html', topic = topic)
 

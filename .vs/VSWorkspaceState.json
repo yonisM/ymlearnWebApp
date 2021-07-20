@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\templates"
+    "\\new_ymlearn",
+    "\\new_ymlearn\\templates"
   ],
-  "SelectedNode": "\\templates\\account.html",
+  "SelectedNode": "\\new_ymlearn\\templates\\GCSE.html",
   "PreviewInSolutionExplorer": false
 }

@@ -1,0 +1,24 @@
+﻿{% extends "layout2.html" %}
+
+{% block content %}
+
+{% for topic in topic %}
+
+<h1 style="text-align:center; margin-top:30px">{{topic[0]}}</h1>
+
+<p> {{topic[1]}} </p>
+
+<p> {{topic[2]}} </p>
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+{% endblock %}
