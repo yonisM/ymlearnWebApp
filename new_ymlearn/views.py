@@ -76,12 +76,32 @@ def GCSE():
 
 def topics(id):
 
+    #Query to return topic name 
+    topic_header = conn.cursor()
 
-    cur.execute("SELECT * FROM public.topics where id = value".replace("value",id))
+    topic_header.execute("select distinct topic from public.topics t where id =value".replace("value",id))
 
-    topic = cur.fetchall()
+    topic_name = topic_header.fetchone()
+
+
+    #Query to return sub topics
+    all_topics = conn.cursor()
+
+    all_topics.execute("select * from public.topics t inner join public.subtopics s on t.id = s.topic_id where topic_id = value".replace("value",id))
+
+    subtopic = all_topics.fetchall()
 
 
 
-    return render_template('topic.html', topic = topic)
+    return render_template('topic.html', subtopic = subtopic, topic_name = topic_name)
+
+
+
+
+@app.route('/learn')
+
+def learn():
+
+
+    return render_template('learn.html')
 
