@@ -72,36 +72,59 @@ def GCSE():
         default = 'Number'
     )
 
-@app.route('/topic/<id>')
+@app.route('/topic/<id>', methods=['GET','POST'])
 
 def topics(id):
 
     #Query to return topic name 
     topic_header = conn.cursor()
-
     topic_header.execute("select distinct topic from public.topics t where id =value".replace("value",id))
-
     topic_name = topic_header.fetchone()
 
 
     #Query to return sub topics
     all_topics = conn.cursor()
-
     all_topics.execute("select * from public.topics t inner join public.subtopics s on t.id = s.topic_id where topic_id = value".replace("value",id))
-
     subtopic = all_topics.fetchall()
 
+    
+    
+    #Query to return learning objectives
+    learning_objective = conn.cursor()
+    learning_objective.execute("select learning_objectives, lo.sub_topic_id from public.subtopics s inner join public.learning_objective lo on s.sub_topic_id = lo.sub_topic_id where topic_id =value".replace("value", id))
+    learning_objectives = learning_objective.fetchall()
 
 
-    return render_template('topic.html', subtopic = subtopic, topic_name = topic_name)
+
+
+
+    return render_template('topic.html', subtopic = subtopic, topic_name = topic_name, learning_objectives = learning_objectives)
 
 
 
 
-@app.route('/learn')
-
-def learn():
 
 
-    return render_template('learn.html')
 
+
+
+@app.route('/learn/<sub_topic_id>')
+
+def learn(sub_topic_id):
+
+    #Query to return learning objectives
+    learning_objective = conn.cursor()
+
+    learning_objective.execute("select * from public.learning_objective where sub_topic_id = value".replace("value", sub_topic_id))
+
+    learning_objectives = learning_objective.fetchall()
+
+
+    #Query to return topic name 
+    topic_header = conn.cursor()
+
+    topic_header.execute("select sub_topic from public.subtopics s inner join learning_objective lo on s.sub_topic_id = lo.sub_topic_id where lo.sub_topic_id = value limit 1".replace("value",sub_topic_id))
+
+    topic_name = topic_header.fetchone()
+
+    return render_template('learn.html', learning_objectives = learning_objectives, topic_name = topic_name )
