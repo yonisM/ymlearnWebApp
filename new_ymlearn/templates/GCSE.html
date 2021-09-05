@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 style="text-align:center; margin-top:30px">GCSE Maths</h1>
+<h1 style="text-align:center; margin-top:30px">{{course_name[0]}}</h1>
 
 
 
@@ -12,9 +12,9 @@
 
    
     <div class="col-sm-6">
-        <a href="{{ url_for('topics', id = topic[2]) }}">
+        <a href="{{ url_for('topics', id = topic[4]) }}">
             <div class="card border-dark mb-3">
-                <div class="card-header">{{topic[0]}}</div>
+                <div class="card-header">{{topic[5]}}</div>
                 <div class="card-body text-dark">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 

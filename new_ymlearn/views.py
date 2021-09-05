@@ -13,8 +13,10 @@ import os
 #DATABASE_URL = os.environ['DATABASE_URL']
 DATABASE_URL = 'postgres://svqsyxjufbvthi:c72117284b2863babb395540da2b749fb1e5bdc25845378ed8c69edbf1e0db4f@ec2-54-74-14-109.eu-west-1.compute.amazonaws.com:5432/dnvhkb81c6gu3'
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
 cur = conn.cursor()
+
+
+
 
 
 
@@ -39,9 +41,14 @@ def home():
     """Renders the home page."""
     return render_template(
         'home.html',
+        course = course,
         title='Home Page',
         year=datetime.now().year,
     )
+
+#Get list of course
+cur.execute("SELECT * FROM public.course")
+course = cur.fetchall()
 
 @app.route('/account')
 def account():
@@ -49,25 +56,42 @@ def account():
     return render_template(
         'account.html',
         title='Contact',
+        course = course,
         year=datetime.now().year,
         message='Your contact page.'
     )
 
-@app.route('/GCSE')
-def GCSE():
 
-    
-    cur.execute("SELECT * FROM public.topics")
 
-    topics = cur.fetchall()
 
-    #listoutput=[i[0] for i in topics]
+
+
+@app.route('/GCSE/<id>')
+def GCSE(id):
+
+    #Get list of course
+    cur.execute("SELECT * FROM public.course")
+    course = cur.fetchall()
+
+    #Query to return topic name 
+    course_header = conn.cursor()
+    course_header.execute("select distinct course_name from public.course where id =value".replace("value",id))
+    course_name = course_header.fetchone()
+
+    #Get list of topics 
+    list_topics =  conn.cursor()
+    list_topics.execute("select distinct c.id, course_name, link, c.id as course_id, t.id as topic_id, topic from public.topics t right join public.course c  on t.course_id = c.id  where course_id =value".replace("value",id))
+    topics = list_topics.fetchall()
+
+
 
    
     """Renders the about page."""
     return render_template(
         'GCSE.html',
+        course_name = course_name,
         topics = topics,
+        course = course,
         title='GCSE Home',
         default = 'Number'
     )
@@ -99,11 +123,6 @@ def topics(id):
 
 
     return render_template('topic.html', subtopic = subtopic, topic_name = topic_name, learning_objectives = learning_objectives)
-
-
-
-
-
 
 
 

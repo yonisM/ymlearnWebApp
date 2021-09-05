@@ -23,17 +23,17 @@
                 {% for subtopic in subtopic %}
 
                 <td>
-                    {{subtopic[4]  }}
-                    {% if subtopic[6] == 'N' %}
+                    {{subtopic[5]  }}
+                    {% if subtopic[7] == 'N' %}
                     <span style="color:red">Unavailable</span>
                     {% else %}
-                    <a href="#" data-toggle="modal" data-target="#information{{subtopic[3]}}"> <i class="bi bi-info-circle-fill" style="color:DodgerBlue"></i> </a>
+                    <a href="#" data-toggle="modal" data-target="#information{{subtopic[4]}}"> <i class="bi bi-info-circle-fill" style="color:DodgerBlue"></i> </a>
                     {% endif %}
                 </td>
 
-                <td> {% if subtopic[6] == 'Y' %} <a href="{{ url_for('learn', sub_topic_id = subtopic[3]) }}">Go to topic</a> {% endif %}</td>
-                <td> {% if subtopic[6] == 'Y' %} <span>Not attempted</span> {% endif %}</td>
-                <td> {% if subtopic[6] == 'Y' %} <span>Not attempted</span>  {% endif %}</td>
+                <td> {% if subtopic[7] == 'Y' %} <a href="{{ url_for('learn', sub_topic_id = subtopic[4]) }}">Go to topic</a> {% endif %}</td>
+                <td> {% if subtopic[7] == 'Y' %} <span>Not attempted</span> {% endif %}</td>
+                <td> {% if subtopic[7] == 'Y' %} <span>Not attempted</span>  {% endif %}</td>
             </tr>
 
 
@@ -48,13 +48,13 @@
 
     <!-- Modal -->
     {% for subtopic in subtopic %}
-    <div class="modal fade" id="information{{subtopic[3]}}" tabindex="-1" role="dialog" aria-labelledby="information" aria-hidden="true">
+    <div class="modal fade" id="information{{subtopic[4]}}" tabindex="-1" role="dialog" aria-labelledby="information" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
 
 
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="text-align:center">{{subtopic[4]}}</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="text-align:center">{{subtopic[5]}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -65,7 +65,7 @@
 
                     <ul>
                         {% for learning_objectives in learning_objectives %}
-                            {% if subtopic[3] == learning_objectives[1]  %}
+                            {% if subtopic[4] == learning_objectives[1]  %}
                                  <li>{{learning_objectives[0]}}</li>
                             {% endif  %}
                         {% endfor %}
