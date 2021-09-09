@@ -13,21 +13,22 @@
 
 <ul>
     {% for learning_objectives in learning_objectives  %}
-            <li>{{learning_objectives[2]}}</li>
+    <li>{{learning_objectives[2]}}</li>
     {% endfor %}
 
 </ul>
 
 
-
+  {% for resources in resources %}
 
 <ul style="list-style-type:none;">
 
-    <li style="margin-bottom:5px"> <a href="#" data-toggle="modal" data-target="#learn"><span style="font-size:30px"><i class="bi bi-play-circle"></i></span> Video 1 </a> </li>
-    <li style="margin-bottom:5px"> <a href="#" data-toggle="modal" data-target="#learn"><span style="font-size:30px"><i class="bi bi-play-circle"></i></span> Video 2 </a> </li>
-    <li style="margin-bottom:5px"> <a href="#" data-toggle="modal" data-target="#learn"><span style="font-size:30px"><i class="bi bi-play-circle"></i></span> Video 3 </a> </li>
-    <li style="margin-bottom:5px"> <a href="#" data-toggle="modal" data-target="#learn"><span style="font-size:30px"><i class="bi bi-pencil-fill"></i></span> Practice Questions </a> </li>
-    <li style="margin-bottom:5px"> <a href="#" data-toggle="modal" data-target="#learn"><span style="font-size:30px"><i class="bi bi-eyeglasses"></i></span> Exam-style Questions </a> </li>
+
+    {% if resources[3] == 'video' %}
+    <li style="margin-bottom:5px"> <a href="#" data-toggle="modal" data-target="#learn"><span style="font-size:30px"><i class="bi bi-play-circle"></i></span> {{ resources[4] }} </a> </li> {% endif %}
+
+    {% if resources[3] == 'file' %}
+    <li style="margin-bottom:5px"><a href="{{resources[2]}}" target="_blank"><span style="font-size:30px"><i class="bi bi-file-earmark-text-fill"></i> </span>  {{resources[4]}}   </a> </li> {% endif %}
 
 
 
@@ -35,31 +36,26 @@
 
 
 
-
-
-
 <!-- Modal -->
 <div class="modal fade" id="learn" tabindex="-1" role="dialog" aria-labelledby="learn" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">{{ resources[4] }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="embed-responsive embed-responsive-21by9">
+                    <iframe class="embed-responsive-item" src="{{ resources[2] }}"></iframe>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-
+ {% endfor %}
 
 
 

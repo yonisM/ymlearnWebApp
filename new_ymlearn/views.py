@@ -146,4 +146,12 @@ def learn(sub_topic_id):
 
     topic_name = topic_header.fetchone()
 
-    return render_template('learn.html', learning_objectives = learning_objectives, topic_name = topic_name )
+
+    #Get resources 
+    list_resources = conn.cursor()
+    list_resources.execute("select * from public.resources where sub_topic_id = value order by resource_type desc, resource_name".replace("value", sub_topic_id))
+
+    resources = list_resources.fetchall()
+
+
+    return render_template('learn.html', learning_objectives = learning_objectives, topic_name = topic_name, resources=resources )
