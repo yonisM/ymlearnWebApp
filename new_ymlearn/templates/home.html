@@ -10,83 +10,51 @@
 
 <div class="row" style="margin-top:25px">
 
-    <p>
-        Welcome to the new YMLearn Learning platform. The learning platform is far from done, there are a lot of work left to be done.
-        In the meantime, this page will serve as a way to communicate what has been done and what work is pending. I could just as 
-        easily do this on a readme file on Github. But I rather do it here for now as this is a page that will always appear in my face!
-    </p>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">
+                Connecting to the database and code base.
+            </div>
+            <div class="card-body">
+
+                <a href="https://docs.google.com/document/d/1MQieRfpLCoBZRFryRJ1tYBfzx4wKSJxeSVGsx0y2qY0/edit?usp=sharing" target="_blank"> See documenation</a>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">
+                Tasks to achieve an MVP.
+            </div>
+            <div class="card-body">
+
+                <a href="https://docs.google.com/document/d/19AfdsR3_vM3exqeR34_DOshWFeCB2DsyshFtVIFTIgI/edit?usp=sharing" target="_blank"> See documenation</a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">
+                Business Plan.
+            </div>
+            <div class="card-body">
+
+                <a href="https://docs.google.com/document/d/12q235pfRNTOQWkhw7U-o_tMnbaA51gztrtnF6PzACHM/edit?usp=sharing" target="_blank"> See documenation</a>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
 </div>
-
-
-
-
-<div class="row">
-
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-header">
-                Connecting to the database and accessing code base.
-            </div>
-            <div class="card-body">
-                Before you can can make sense of the completed tasks, you need to first connect to the database and you must be able connect to the code base.
-                <br><br><h3>Connecting to the database</h3>
-                        <ul>
-                            <li>Step 1 - Download DBbeaver</li>
-                            <li>Step 2 - Once DBbeaver has been downloaded, create a database connection. Select PostgreSQL</li>
-                            <li>Step 3 - On the main tab, enter connection details. Request this details from Yonis Mohamoud</li>
-                            <li>Step 4 - You should be able to connect to the database </li>
-                            <li>Step 5 - Familiarise yourself with the database schema . <a href="https://drive.google.com/file/d/1Uubx-m4DrxjcfMG2vJaXZPmBpKxDnze2/view?usp=sharing" target="_blank">Click here to view schema.</a></li>
-                        </ul>
-
-                            <h3>Accessing the codebase</h3>
-                            <ul>
-                                <li> Step 1 - Visit the GitHub repository <a href="https://github.com/yonisM/ymlearnWebApp" target="_blank">here</a>. The repository has been deliberately left on public so heroku can access it. Once a push is made to the main branch, the app on heroku is automatically update with the latest code changes.</li>
-                                <li>Step 2 - To set the code locally, you need to install the packages in the requirements file. Simply navigate to the directory containing the <strong>requirements.txt</strong> file in command prompt or terminal and run the command <strong>pip install -r requirements.txt</strong> </li>
-                                <li>Step 3 - To launch the website on your local machine, navigate to the directory containing the file <strong>server.py</strong> and run the command <strong>python server.py</strong></li>
-                                <li>Step 4 - The login functionality has not been developed yet, so for the time being, click on login by pass to skip past this page.</li>
-                            </ul>
-
-                        
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-header">
-                Completed/pending tasks
-            </div>
-            <div class="card-body">
-                The website is fully dynamic. A user should be able to easily create a new course by simply inserting values to various database tables. Below are the tasks that have been completed (see text in green) and tasks that are pending (see text in red):
-                <ul>
-                    <li style="color:green">Step 1 - Insert new course into table <strong>course</strong>. An id, course_name, and flag that determines whether the course is available needs to be provided. For course_available column, if select No, you won't see the topic in the qualification dropdown</li>
-                    <li style="color:green">Step 2 - Insert a topic(s). There is a Foreign key to the course table. You need to link the new topic(s) back to the course. This will help your user see what topics are linked to the course i.e. Number, Geometry etc.. </li>
-                    <li style="color:green">Step 3 - Insert a sub topic(s). There is a Foreign key to the topic table. You need to link the sub topic back to the topic. This is how you are able to see a massive list of under Number, Algebra etc...</li>
-                    <li style="color:green">Step 4 - Insert learning objective(s). There is a foreign key to the sub topic table. You will need to link leaning objective back to the subtopic. For topics that are available, there is an option to select information icon to see the learning objectives. You can also see learning objectives by selecting <strong>Go to topic</strong></li>
-                    <li style="color:green">Step 5 - Insert Videos and files to a specific sub_topic</li>
-                    <li style="color:red">Step 6 - Create the login and log off functionality</li>
-                    <li style="color:red">Step 7 - Insert practice questions where students can answer questions and get feedback on performance</li>
-                    <li style="color:red">Step 8 - Insert exam style questions where students can answer questions and get feedback on performance</li>
-                    <li style="color:red">Step 9 - Record student's First test and last test result on sub topic page. All student's test results to be stored in database table</li>
-                    <li style="color:red">Step 10 - Create a dashboard page where admin can access student's result</li>
-                    <li style="color:red">Step 11 - Create accounts specific to teachers</li>
-                    <li style="color:red">Step 12 - Students can be assigned to a teacher</li>
-                    <li style="color:red">Step 13 - Create a dashboard page for teachers so they can access their student's details </li>
-                    <li style="color:red">Step 14 - Enable password reset so students can do it themselves or admin can do it for them.</li>
-
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-    </div>
 
 
 
