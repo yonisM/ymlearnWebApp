@@ -7,6 +7,15 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/content/login_registration.css" />
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <script>
+        function onSubmit(token) {
+            document.getElementById("register").submit();
+        }
+    </script>
+
+
 </head>
 
 
@@ -24,7 +33,7 @@
                     <h2>YMLearn Registration</h2>
                     <p>Please enter your email and password</p>
                 </div>
-                <form id="Login">
+                <form id="register">
 
 
                     <div class="form-group">
@@ -34,19 +43,6 @@
                     <div class="form-group">
                         <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
                     </div>
-
-
-                    <div class="form-group">
-                        <select class="form-control" aria-label="Default select example">
-                            <option selected disabled>Select Qualification</option>
-                            <option value="KS3">KS3 (Year 7 to 9)</option>
-                            <option value="GCSE">GCSE (Year 10 to 11)</option>
-                            <option value="A-Level">A-Level (Year 12 to 13)</option>
-                        </select>
-
-
-                    </div>
-
 
 
 
@@ -63,9 +59,7 @@
 
 
 
-
-
-                        <button type="submit" class="btn btn-primary">Create an Account</button><br><br>
+                        <button type="submit" data-sitekey="6Lc22lwcAAAAAMeQBZVNXwhOjL49f8PSm9ly6YJa" data-callback='onSubmit' data-action="submit" class="btn btn-primary g-recaptcha">Create an Account</button><br><br>
 
                         <p>Have an account? <a href="{{ url_for('login') }}"> Login now! </a></p>
 
