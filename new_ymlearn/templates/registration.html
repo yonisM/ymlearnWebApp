@@ -7,6 +7,8 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/content/login_registration.css" />
+
+
     <script src="https://www.google.com/recaptcha/api.js"></script>
 
     <script>
@@ -33,7 +35,7 @@
                     <h2>YMLearn Registration</h2>
                     <p>Please enter your email and password</p>
                 </div>
-                <form id="register">
+                <form id="register" action="?" method="POST">
 
 
                     <div class="form-group">
@@ -59,7 +61,7 @@
 
 
 
-                        <button type="submit" data-sitekey="6Lc22lwcAAAAAMeQBZVNXwhOjL49f8PSm9ly6YJa" data-callback='onSubmit' data-action="submit" class="btn btn-primary g-recaptcha">Create an Account</button><br><br>
+                        <button type="submit" data-sitekey="6Lc22lwcAAAAAMeQBZVNXwhOjL49f8PSm9ly6YJa" data-callback='onSubmit' data-action="submit" class="g-recaptcha btn btn-primary " data-size="invisible">Create an Account</button><br><br>
 
                         <p>Have an account? <a href="{{ url_for('login') }}"> Login now! </a></p>
 
